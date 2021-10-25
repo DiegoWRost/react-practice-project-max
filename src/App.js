@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
-import FormUI from "./components/UI/FormUI";
-import UserList from "./components/Users/UserList";
+import AddUser from "./components/Users/AddUser";
+import UsersList from "./components/Users/UsersList";
 
 const DUMMY_USERS = [
   {
-    username: "Diego",
+    name: "Diego",
     age: "34",
   },
   {
-    username: "Grazi",
+    name: "Grazi",
     age: "29",
   },
 ];
@@ -17,16 +17,17 @@ const DUMMY_USERS = [
 function App() {
   const [users, setUsers] = useState(DUMMY_USERS);
 
-  const addUser = user => {
-    setUsers((prevUsers) => {
-      return [user, ...prevUsers];
-    });
-  };
+  // const addUser = user => {
+  //   setUsers((prevUsers) => {
+  //     return [user, ...prevUsers];
+  //   });
+  // };
 
   return (
     <div>
-      <FormUI onSaveData={addUser}></FormUI>
-      <UserList users={users}></UserList>
+      {/* <AddUser onSaveData={addUser}></AddUser> */}
+      <AddUser />
+      <UsersList users={users}></UsersList>
     </div>
   );
 }
