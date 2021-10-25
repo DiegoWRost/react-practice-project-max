@@ -3,31 +3,22 @@ import React, { useState } from "react";
 import AddUser from "./components/Users/AddUser";
 import UsersList from "./components/Users/UsersList";
 
-const DUMMY_USERS = [
-  {
-    name: "Diego",
-    age: "34",
-  },
-  {
-    name: "Grazi",
-    age: "29",
-  },
-];
-
 function App() {
-  const [users, setUsers] = useState(DUMMY_USERS);
+  const [usersList, setUsersList] = useState([]);
 
-  // const addUser = user => {
-  //   setUsers((prevUsers) => {
-  //     return [user, ...prevUsers];
-  //   });
-  // };
+  const addUserHandler = (uName, uAge) => {
+    setUsersList((prevUsersList) => {
+      return [
+        ...prevUsersList,
+        { name: uName, age: uAge, id: Math.random().toString() },
+      ];
+    });
+  };
 
   return (
     <div>
-      {/* <AddUser onSaveData={addUser}></AddUser> */}
-      <AddUser />
-      <UsersList users={users}></UsersList>
+      <AddUser onAddUser={addUserHandler}></AddUser>
+      <UsersList users={usersList}></UsersList>
     </div>
   );
 }
